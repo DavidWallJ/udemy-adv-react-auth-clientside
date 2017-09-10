@@ -1,3 +1,6 @@
+// backend project required
+// udemy-adv-react-auth-pro
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -23,21 +26,22 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 // this way they can hit reload while logged in without getting logged out
 const store = createStoreWithMiddleware(reducers);
 
-const token = localStorage.getItem('token')
+const token = localStorage.getItem('token');
 // if we have a token, consider the user to be signed in
 if (token) {
-  store.dispatch({ type: 'AUTH_USER'} );
+	store.dispatch({ type: 'AUTH_USER' });
 }
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Welcome} />
-        <Route path="signin" component={Signin} />
-        <Route path="signout" component={Signout} />
-        <Route path="signup" component={Signup} />
-        <Route path="feature" component={RequireAuth(Feature)}/>
-      </Route>
-    </Router>
-  </Provider>
-  , document.querySelector('.container'));
+	<Provider store={store}>
+		<Router history={browserHistory}>
+			<Route path="/" component={App}>
+				<IndexRoute component={Welcome} />
+				<Route path="signin" component={Signin} />
+				<Route path="signout" component={Signout} />
+				<Route path="signup" component={Signup} />
+				<Route path="feature" component={RequireAuth(Feature)} />
+			</Route>
+		</Router>
+	</Provider>,
+	document.querySelector('.container')
+);

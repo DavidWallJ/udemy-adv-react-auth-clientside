@@ -3,4 +3,4 @@
  */
 import React from 'react';
 
-export default () => <div>Welcome to a serene location.</div>;
+export default () => <div>You're in! You have been authenticated.</div>;
